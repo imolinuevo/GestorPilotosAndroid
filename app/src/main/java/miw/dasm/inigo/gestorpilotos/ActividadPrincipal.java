@@ -23,12 +23,16 @@ public class ActividadPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO
-                AlmacenPilotos almacenPilotos = new AlmacenPilotos(getApplicationContext());
-                almacenPilotos.add(new Piloto(1, "p1", 1, "Derbi", true));
-                almacenPilotos.add(new Piloto(2, "p2", 2, "Honda", true));
-                almacenPilotos.add(new Piloto(3, "p3", 3, "Yamaha", true));
             }
         });
+    }
+
+    protected void onStart() {
+        super.onStart();
+        AlmacenPilotos almacenPilotos = new AlmacenPilotos(getApplicationContext());
+        almacenPilotos.add(new Piloto(1, "p1", 1, "Derbi", true));
+        almacenPilotos.add(new Piloto(2, "p2", 2, "Honda", true));
+        almacenPilotos.add(new Piloto(3, "p3", 3, "Yamaha", true));
     }
 
     @Override
