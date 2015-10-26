@@ -54,4 +54,15 @@ public class Piloto {
     public void set_activo(boolean activo) {
         this._activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return "Piloto{" +
+                "_id=" + _id +
+                ", _nombre='" + _nombre + '\'' +
+                ", _dorsal=" + _dorsal +
+                ", _moto='" + _moto + '\'' +
+                ", _activo=" + _activo +
+                '}';
+    }
 }
