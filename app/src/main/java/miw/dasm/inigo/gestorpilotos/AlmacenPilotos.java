@@ -34,12 +34,7 @@ public class AlmacenPilotos extends SQLiteOpenHelper {
     }
 
     public int add(Piloto piloto) {
-        int activo;
-        if (piloto.is_activo()){
-            activo = 1;
-        } else {
-            activo = 0;
-        }
+        int activo = (piloto.is_activo() == true) ? 1: 0;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valores = new ContentValues();
         valores.put(PilotoContract.TablaPiloto.COL_NAME_ID, piloto.get_id());
