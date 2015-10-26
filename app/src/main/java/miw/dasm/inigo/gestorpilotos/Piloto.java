@@ -1,57 +1,57 @@
 package miw.dasm.inigo.gestorpilotos;
 
 public class Piloto {
-    private int id;
-    private String nombre;
-    private int dorsal;
-    private String moto;
-    private boolean activo;
+    private int _id;
+    private String _nombre;
+    private int _dorsal;
+    private String _moto;
+    private boolean _activo;
 
     public Piloto(int id, String nombre, int dorsal, String moto, boolean activo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.dorsal = dorsal;
-        this.moto = moto;
-        this.activo = activo;
+        this._id = id;
+        this._nombre = nombre;
+        this._dorsal = dorsal;
+        this._moto = moto;
+        this._activo = activo;
     }
 
-    public int getId() {
-        return id;
+    public int get_id() {
+        return _id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void set_id(int id) {
+        this._id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String get_nombre() {
+        return _nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void set_nombre(String nombre) {
+        this._nombre = nombre;
     }
 
-    public int getDorsal() {
-        return dorsal;
+    public int get_dorsal() {
+        return _dorsal;
     }
 
-    public void setDorsal(int dorsal) {
-        this.dorsal = dorsal;
+    public void set_dorsal(int dorsal) {
+        this._dorsal = dorsal;
     }
 
-    public String getMoto() {
-        return moto;
+    public String get_moto() {
+        return _moto;
     }
 
-    public void setMoto(String moto) {
-        this.moto = moto;
+    public void set_moto(String moto) {
+        this._moto = moto;
     }
 
-    public boolean isActivo() {
-        return activo;
+    public boolean is_activo() {
+        return _activo;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void set_activo(boolean activo) {
+        this._activo = activo;
     }
 }
