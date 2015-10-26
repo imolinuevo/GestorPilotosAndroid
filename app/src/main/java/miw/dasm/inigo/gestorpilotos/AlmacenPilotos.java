@@ -2,8 +2,11 @@ package miw.dasm.inigo.gestorpilotos;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 public class AlmacenPilotos extends SQLiteOpenHelper {
 
@@ -43,5 +46,14 @@ public class AlmacenPilotos extends SQLiteOpenHelper {
         valores.put(PilotoContract.TablaPiloto.COL_NAME_MOTO, piloto.get_moto());
         valores.put(PilotoContract.TablaPiloto.COL_NAME_ACTIVO, activo);
         return (int) db.insert(PilotoContract.TablaPiloto.TABLE_NAME, null, valores);
+    }
+
+    public ArrayList<Piloto> getAll() {
+        ArrayList<Piloto> pilotos = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String consulta = "SELECT * FROM " + PilotoContract.TablaPiloto.TABLE_NAME;
+        Cursor cursor = db.rawQuery(consulta, null);
+        //TODO iterar
+        return pilotos;
     }
 }
