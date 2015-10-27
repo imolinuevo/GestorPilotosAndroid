@@ -5,11 +5,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,27 +27,23 @@ public class ActividadPrincipal extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
     }
 
     protected void onStart() {
         super.onStart();
         AlmacenPilotos almacenPilotos = new AlmacenPilotos(getApplicationContext());
-        /*
-        almacenPilotos.add(new Piloto(1, "p1", 1, "Derbi", true));
-        almacenPilotos.add(new Piloto(2, "p2", 2, "Honda", true));
-        almacenPilotos.add(new Piloto(3, "p3", 3, "Yamaha", true));
-        */
         List<Piloto> values = almacenPilotos.getAll();
         PilotoAdapter adapter = new PilotoAdapter(this, android.R.layout.simple_spinner_dropdown_item, values);
         ListView listaPilotos = (ListView) findViewById(R.id.listaPilotos);
         listaPilotos.setAdapter(adapter);
+        Button button = (Button) findViewById(R.id.addButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addPiloto();
+            }
+        });
     }
 
     @Override
@@ -59,6 +59,23 @@ public class ActividadPrincipal extends AppCompatActivity {
             borrarContenido();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addPiloto() {
+        AlmacenPilotos almacenPilotos = new AlmacenPilotos(getApplicationContext());
+        EditText editText = (EditText) findViewById(R.id.textViewAdd);
+        String name = editText.getText().toString();
+        int id = 0;
+        List<Piloto> pilotos = almacenPilotos.getAll();
+        if (pilotos.size() != 0) {
+            id = pilotos.size();
+        }
+        id++;
+        almacenPilotos.add(new Piloto(id, name, id, "Moto", false));
+        List<Piloto> values = almacenPilotos.getAll();
+        PilotoAdapter adapter = new PilotoAdapter(this, android.R.layout.simple_spinner_dropdown_item, values);
+        ListView listaPilotos = (ListView) findViewById(R.id.listaPilotos);
+        listaPilotos.setAdapter(adapter);
     }
 
     public void borrarContenido() {

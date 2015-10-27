@@ -11,19 +11,37 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/layout_actividad_principal" tools:context=".ActividadPrincipal">
 
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:id="@+id/textViewAdd" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:text="Añadir piloto"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewAdd"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <TextView android:text="Lista de Pilotos"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_gravity="top"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:layout_below="@+id/addButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
     <ListView
         android:id="@+id/listaPilotos"
         android:focusable="false"
+        android:layout_below="@+id/textView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
     </ListView>
 </RelativeLayout>
