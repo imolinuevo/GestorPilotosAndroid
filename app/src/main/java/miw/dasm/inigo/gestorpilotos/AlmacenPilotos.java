@@ -60,4 +60,10 @@ public class AlmacenPilotos extends SQLiteOpenHelper {
         }
         return pilotos;
     }
+
+    public void emptyAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String consulta = "DELETE FROM " + PilotoContract.TablaPiloto.TABLE_NAME;
+        db.execSQL(consulta);
+    }
 }

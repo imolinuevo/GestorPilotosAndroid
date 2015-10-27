@@ -55,9 +55,18 @@ public class ActividadPrincipal extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.accionVaciar) {
+            borrarContenido();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void borrarContenido() {
+        AlmacenPilotos almacenPilotos = new AlmacenPilotos(getApplicationContext());
+        almacenPilotos.emptyAll();
+        List<Piloto> values = almacenPilotos.getAll();
+        PilotoAdapter adapter = new PilotoAdapter(this, android.R.layout.simple_spinner_dropdown_item, values);
+        ListView listaPilotos = (ListView) findViewById(R.id.listaPilotos);
+        listaPilotos.setAdapter(adapter);
     }
 }
