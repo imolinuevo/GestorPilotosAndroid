@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -53,7 +54,10 @@ public class AlmacenPilotos extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String consulta = "SELECT * FROM " + PilotoContract.TablaPiloto.TABLE_NAME;
         Cursor cursor = db.rawQuery(consulta, null);
-        //TODO iterar
+        while (cursor.moveToNext()) {
+            boolean activo = (cursor.getString(4).equals("0")) ? false : true;
+            pilotos.add(new Piloto(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), activo));
+        }
         return pilotos;
     }
 }

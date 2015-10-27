@@ -8,6 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ActividadPrincipal extends AppCompatActivity {
 
@@ -30,31 +35,29 @@ public class ActividadPrincipal extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         AlmacenPilotos almacenPilotos = new AlmacenPilotos(getApplicationContext());
+        /*
         almacenPilotos.add(new Piloto(1, "p1", 1, "Derbi", true));
         almacenPilotos.add(new Piloto(2, "p2", 2, "Honda", true));
         almacenPilotos.add(new Piloto(3, "p3", 3, "Yamaha", true));
-        //TODO recuperar y mostrar pilotos
+        */
+        List<Piloto> values = almacenPilotos.getAll();
+        PilotoAdapter adapter = new PilotoAdapter(this, android.R.layout.simple_spinner_dropdown_item, values);
+        ListView listaPilotos = (ListView) findViewById(R.id.listaPilotos);
+        listaPilotos.setAdapter(adapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_actividad_principal, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
