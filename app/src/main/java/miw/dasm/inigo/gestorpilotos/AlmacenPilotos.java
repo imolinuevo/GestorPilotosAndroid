@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,8 @@ public class AlmacenPilotos extends SQLiteOpenHelper {
                 + PilotoContract.TablaPiloto.COL_NAME_NOMBRE + " TEXT, "
                 + PilotoContract.TablaPiloto.COL_NAME_DORSAL + " INTEGER, "
                 + PilotoContract.TablaPiloto.COL_NAME_MOTO + " TEXT, "
-                + PilotoContract.TablaPiloto.COL_NAME_ACTIVO + " INTEGER)";
+                + PilotoContract.TablaPiloto.COL_NAME_ACTIVO + " INTEGER, "
+                + PilotoContract.TablaPiloto.COL_NAME_IMAGENURL + " TEXT)";
         db.execSQL(consultaSQL);
     }
 
@@ -46,6 +46,7 @@ public class AlmacenPilotos extends SQLiteOpenHelper {
         valores.put(PilotoContract.TablaPiloto.COL_NAME_DORSAL, piloto.get_dorsal());
         valores.put(PilotoContract.TablaPiloto.COL_NAME_MOTO, piloto.get_moto());
         valores.put(PilotoContract.TablaPiloto.COL_NAME_ACTIVO, activo);
+        valores.put(PilotoContract.TablaPiloto.COL_NAME_IMAGENURL, piloto.get_imagen_url());
         return (int) db.insert(PilotoContract.TablaPiloto.TABLE_NAME, null, valores);
     }
 
@@ -56,7 +57,7 @@ public class AlmacenPilotos extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(consulta, null);
         while (cursor.moveToNext()) {
             boolean activo = (cursor.getString(4).equals("0")) ? false : true;
-            pilotos.add(new Piloto(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), activo));
+            pilotos.add(new Piloto(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), activo, cursor.getString(5)));
         }
         return pilotos;
     }

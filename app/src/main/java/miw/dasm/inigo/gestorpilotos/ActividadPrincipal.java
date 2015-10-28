@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +38,13 @@ public class ActividadPrincipal extends AppCompatActivity {
         PilotoAdapter adapter = new PilotoAdapter(this, android.R.layout.simple_spinner_dropdown_item, values);
         ListView listaPilotos = (ListView) findViewById(R.id.listaPilotos);
         listaPilotos.setAdapter(adapter);
+        listaPilotos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("ItemOnclick", new Integer(position).toString());
+                Log.d("ItemOnclick", parent.getItemAtPosition(position).toString());
+            }
+        });
         Button button = (Button) findViewById(R.id.addButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +79,7 @@ public class ActividadPrincipal extends AppCompatActivity {
             id = pilotos.size();
         }
         id++;
-        almacenPilotos.add(new Piloto(id, name, id, "Moto", false));
+        almacenPilotos.add(new Piloto(id, name, id, "Moto", false, "Foto"));
         List<Piloto> values = almacenPilotos.getAll();
         PilotoAdapter adapter = new PilotoAdapter(this, android.R.layout.simple_spinner_dropdown_item, values);
         ListView listaPilotos = (ListView) findViewById(R.id.listaPilotos);
