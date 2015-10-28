@@ -28,15 +28,6 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         return mIcon11;
     }
 
-
-/*    @Override
-    protected void onPreExecute() {
-        // TODO Auto-generated method stub
-        super.onPreExecute();
-        showProgressDialog();
-    }*/
-
     protected void onPostExecute(Bitmap result) {
-        //pDlg.dismiss();
         bmImage.setImageBitmap(result);
     }}

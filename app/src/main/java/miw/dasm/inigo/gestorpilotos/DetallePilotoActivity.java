@@ -7,9 +7,6 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 public class DetallePilotoActivity extends AppCompatActivity {
 
     @Override
