@@ -4,7 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class DetallePilotoActivity extends AppCompatActivity {
 
@@ -25,5 +29,11 @@ public class DetallePilotoActivity extends AppCompatActivity {
         CheckBox activoCheck = (CheckBox) findViewById(R.id.activoCheck);
         activoCheck.setChecked(bundle.getBoolean("_activo"));
         activoCheck.setText("Estado");
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        try {
+            new DownloadImageTask((ImageView)  imageView).execute("https://cdn2.iconfinder.com/data/icons/transport-5/236/transport-icons-04.png");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
