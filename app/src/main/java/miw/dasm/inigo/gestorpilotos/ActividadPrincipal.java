@@ -1,5 +1,6 @@
 package miw.dasm.inigo.gestorpilotos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -43,6 +44,7 @@ public class ActividadPrincipal extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("ItemOnclick", new Integer(position).toString());
                 Log.d("ItemOnclick", parent.getItemAtPosition(position).toString());
+                lanzarDetallePiloto((Piloto) parent.getItemAtPosition(position));
             }
         });
         Button button = (Button) findViewById(R.id.addButton);
@@ -52,6 +54,11 @@ public class ActividadPrincipal extends AppCompatActivity {
                 addPiloto();
             }
         });
+    }
+
+    public void lanzarDetallePiloto(Piloto piloto) {
+        Intent detallePioto = new Intent(this, DetallePilotoActivity.class);
+        startActivity(detallePioto);
     }
 
     @Override
