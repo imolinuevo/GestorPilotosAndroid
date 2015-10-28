@@ -58,6 +58,14 @@ public class ActividadPrincipal extends AppCompatActivity {
 
     public void lanzarDetallePiloto(Piloto piloto) {
         Intent detallePioto = new Intent(this, DetallePilotoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("_id", piloto.get_id());
+        bundle.putInt("_dorsal", piloto.get_dorsal());
+        bundle.putBoolean("_activo", piloto.is_activo());
+        bundle.putString("_nombre", piloto.get_nombre());
+        bundle.putString("_moto", piloto.get_moto());
+        bundle.putString("_imagen_url", piloto.get_imagen_url());
+        detallePioto.putExtra("bundle", bundle);
         startActivity(detallePioto);
     }
 
